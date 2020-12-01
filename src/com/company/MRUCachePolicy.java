@@ -43,12 +43,12 @@ public class MRUCachePolicy<V> implements CacheEvictionPolicy<V> {
 
         CacheEntry<Integer, V> cacheEntry = cacheEntryConcurrentHashMap.getOrDefault(key, null);
         if (cacheEntry != null) {
-            LOGGER.info("key {} found in cache");
+            LOGGER.info("key {} found in cache", key);
             cacheEntryDeque.remove(cacheEntry);
             cacheEntryDeque.addFirst(cacheEntry);
             return cacheEntry.getVal();
         }
-        LOGGER.info("key {} not found in cache");
+        LOGGER.info("key {} not found in cache", key);
         return null;
     }
 
